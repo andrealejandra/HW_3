@@ -1,34 +1,80 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var passLength = document.getElementById("charCount")
+const charBtn = document.getElementById("charBtn")
+
+//the amount in the charCount box (passLength) is not being applied to charAmount
+charBtn.addEventListener("click", e => {
+  e.preventDefault()})
+  var charAmount = +passLength.value
+
+  //this keeps giving me undefined????
+console.log(charAmount)
+
+  if ((charAmount >= 8) && (charAmount <= 128)) {
+
+    const upperYes = confirm("Include uppercase?");
+    const lowerYes = confirm("Include lowercase?");
+    const numbersYes = confirm("Include numbers?");
+    const symbolsYes = confirm("Include symbols?");
+
+  }
+
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword()
- }
+  var password = generatePassword(charAmount, upperYes, lowerYes, numbersYes, symbolsYes)
+ String.fromCharCode(65)
+}
+
+function arrayFromLowToHigh(low,high) {
+  const array = []
+  for (let i = low; i <= high; i++) {
+    array.push(i)
+  }
+  return array
+}
+
+
+generateBtn.addEventListener("click", e => {
+  e.preventDefault()
+})
+
+
 
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
   
 
-//ask for length when button is clicked
-function generatePassword() {
-  howLong = +prompt("How many characters?");
-  //if ((howLong >= 8) && (howLong <= 128));
+//trigger series of prompts when button is clicked
+function generatePassword(charAmount, upper, lower, numbers, symbols) {
+  let charCodes = upperSet
+  if (lowerYes) charCodes = charCodes.concat
+  (lowerSet)
+  if (numbersYes) charCodes = charCodes.concat
+  (symbolsSet)
+const passwordCharacters = []
+  for (let i = 0; i < charAmount, i++)
+}
+ 
 
-  var upper = confirm("Include uppercase?");
-  var lower = confirm("Include lowercase?");
-  var numbers = confirm("Include numbers?");
-  var symbols = confirm("Include symbols?");
 
   // will not work --> else if {alert("Password must be between 8 - 128 characters")}
+
 //character vars
-const symbolsSet = ["!", "@", "#", "$", "%", "^", "&", "*"] //8
-const numbersSet = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] //10
-const lowerSet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"] //26
-const upperSet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] //26
+const symbolsSet = arrayFromLowToHigh (33, 47).concat(
+  arrayFromLowToHigh (58, 64).concat(
+    arrayFromLowToHigh (91, 96).concat(
+      arrayFromLowToHigh (123, 126)
+    )
+  )
+)
+const numbersSet = arrayFromLowToHigh (48, 57)
+const lowerSet = arrayFromLowToHigh (97, 122)
+const upperSet = arrayFromLowToHigh (65, 90)
 
 const randomUpper = upperSet[Math.floor(Math.random * 26 )]
 const randomLower = lowerSet[Math.floor(Math.random * 26 )]
@@ -40,7 +86,7 @@ const randomGen = {
   lower: randomLower,
   numbers: randomNumbers,
   symbols: randomSymbols
-}}
+}
 
 
 
@@ -59,7 +105,7 @@ generateBtn.addEventListener("click", writePassword);
 
 //prompt how many characters
 
-// add value to howLong if within 8-128
+// add value to passLength if within 8-128
 
 //if not alert not within 8-128
 
